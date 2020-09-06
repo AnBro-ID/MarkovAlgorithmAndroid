@@ -168,7 +168,7 @@
                     android:adjustViewBounds="true"
                     android:background="@drawable/button_background_selector"
                     android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/add_up_line" />
+                    app:srcCompat="@drawable/back1" />
 
                 <ImageButton
                     android:id="@+id/add_line_up3"
