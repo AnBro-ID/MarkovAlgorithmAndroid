@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ru.anbroid.markovalgo">
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="false"
+        android:theme="@style/AppTheme"
+        android:resizeableActivity="false"
+        android:supportsPictureInPicture="false"
+        android:requestLegacyExternalStorage="true" >
+
+        <activity android:resizeableActivity="false"
+            android:supportsPictureInPicture="false" android:name="ru.anbroid.markovalgo.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:resizeableActivity="false"
+            android:supportsPictureInPicture="false" android:name="ru.anbroid.markovalgo.HelpActivity"
+            android:theme="@style/NoActBarTheme">
+        </activity>
+
+        <activity android:resizeableActivity="false"
+            android:supportsPictureInPicture="false" android:name="ru.anbroid.markovalgo.TaskActivity"
+            android:theme="@style/NoActBarTheme">
+        </activity>
+
+        <activity android:resizeableActivity="false"
+            android:supportsPictureInPicture="false" android:name="ru.anbroid.markovalgo.ProtocolActivity"
+            android:theme="@style/NoActBarTheme">
+        </activity>
+
+        <activity android:resizeableActivity="false"
+            android:supportsPictureInPicture="false" android:name="ru.anbroid.markovalgo.PrefActivity"
+            android:theme="@style/NoActBarTheme">
+        </activity>
+
+    </application>
+</manifest>

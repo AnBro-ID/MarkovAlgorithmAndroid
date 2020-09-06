@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:context="ru.anbroid.markovalgo.MainActivity"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/workstr_back"
+        android:descendantFocusability="beforeDescendants"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:orientation="vertical">
+
+        <ru.anbroid.markovalgo.RulerView
+            android:id="@+id/ruler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp" />
+
+        <EditText
+            android:id="@+id/workString"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@null"
+            android:inputType="text"
+            android:maxLines="1"
+            android:scrollbars="horizontal"
+            android:singleLine="true"
+            android:textColor="@color/text_color"
+            android:textCursorDrawable="@null"
+            android:textSize="18dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:background="@drawable/back1"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/play_btn"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="false"
+            android:background="@drawable/button_background_selector"
+            android:scaleType="fitCenter"
+            android:src="@drawable/play"
+            app:srcCompat="@drawable/play" />
+
+        <ImageButton
+            android:id="@+id/stop_btn"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:adjustViewBounds="false"
+            android:background="@drawable/button_background_selector"
+            android:scaleType="fitCenter"
+            app:srcCompat="@drawable/stop" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.92"
+            android:background="@drawable/back3"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="25dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/back1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:maxLines="1"
+                    android:text="@string/sample_text"
+                    android:textAlignment="center"
+                    android:textColor="@color/text_color"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/back1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:maxLines="1"
+                    android:text="@string/replace_text"
+                    android:textAlignment="center"
+                    android:textColor="@color/text_color"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="0px"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/back1"
+                    android:ellipsize="end"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:maxLines="1"
+                    android:text="@string/comment_text"
+                    android:textAlignment="center"
+                    android:textColor="@color/text_color"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <ListView
+                android:id="@+id/lvMain"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"
+                android:dividerHeight="0dp">
+
+            </ListView>
+
+        </LinearLayout>
+
+        <ScrollView
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.08"
+            android:background="@drawable/back1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/add_line_up"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/button_background_selector"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/add_up_line" />
+
+                <ImageButton
+                    android:id="@+id/add_line_up2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/button_background_selector"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/add_up_line" />
+
+                <ImageButton
+                    android:id="@+id/add_line_up3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/button_background_selector"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/add_up_line" />
+
+                <ImageButton
+                    android:id="@+id/add_line_down"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/button_background_selector"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/add_line" />
+
+                <ImageButton
+                    android:id="@+id/delete_line"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/button_background_selector"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/delete_line" />
+
+                <ImageButton
+                    android:id="@+id/backup_ribbon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/button_background_selector"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/backup_ribbon" />
+
+                <ImageButton
+                    android:id="@+id/restore_ribbon"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/button_background_selector"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/restore_ribbon" />
+
+                <ImageButton
+                    android:id="@+id/create_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/button_background_selector"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/create" />
+
+                <ImageButton
+                    android:id="@+id/open_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/button_background_selector"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/open" />
+
+                <ImageButton
+                    android:id="@+id/save_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/button_background_selector"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/save" />
+
+                <ImageButton
+                    android:id="@+id/step_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/button_background_selector"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/step" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+    </LinearLayout>
+
+    </LinearLayout>
