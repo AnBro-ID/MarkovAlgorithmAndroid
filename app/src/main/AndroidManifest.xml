@@ -32,11 +32,6 @@
         </activity>
 
         <activity android:resizeableActivity="false"
-            android:supportsPictureInPicture="false" android:name="ru.anbroid.markovalgo.ProtocolActivity"
-            android:theme="@style/NoActBarTheme">
-        </activity>
-
-        <activity android:resizeableActivity="false"
             android:supportsPictureInPicture="false" android:name="ru.anbroid.markovalgo.PrefActivity"
             android:theme="@style/NoActBarTheme">
         </activity>

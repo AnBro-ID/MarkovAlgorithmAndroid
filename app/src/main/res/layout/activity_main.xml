@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
         android:background="@color/workstr_back"
         android:descendantFocusability="beforeDescendants"
         android:focusable="true"
@@ -34,6 +34,8 @@
             android:background="@null"
             android:inputType="text"
             android:maxLines="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:scrollbars="horizontal"
             android:singleLine="true"
             android:textColor="@color/text_color"
@@ -162,24 +164,6 @@
                     app:srcCompat="@drawable/add_up_line" />
 
                 <ImageButton
-                    android:id="@+id/add_line_up2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/button_background_selector"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/back1" />
-
-                <ImageButton
-                    android:id="@+id/add_line_up3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/button_background_selector"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/add_up_line" />
-
-                <ImageButton
                     android:id="@+id/add_line_down"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -196,6 +180,24 @@
                     android:background="@drawable/button_background_selector"
                     android:scaleType="fitCenter"
                     app:srcCompat="@drawable/delete_line" />
+
+                <ImageButton
+                    android:id="@+id/up"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/button_background_selector"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/up" />
+
+                <ImageButton
+                    android:id="@+id/down"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/button_background_selector"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/down" />
 
                 <ImageButton
                     android:id="@+id/backup_ribbon"

@@ -36,6 +36,13 @@ public class Markov implements Serializable
         this.comment = "";
     }
 
+    public Markov(Markov markov)
+    {
+        this.sample = markov.sample;
+        this.replacement = markov.replacement;
+        this.comment = markov.comment;
+    }
+
     public boolean hasText() { return !sample.isEmpty() || !replacement.isEmpty() || !comment.isEmpty(); }
 
     public String getSample() { return sample; }

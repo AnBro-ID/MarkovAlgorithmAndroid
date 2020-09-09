@@ -39,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 {
     protected MarkovAdapter markovAdapter;
     private AsyncTask currentTask;
+    protected EditText workString;
 
     private boolean isPlay;                 // флаг состояния МП - работает
     private boolean isPaused;               // флаг состояния МП - приостановлена
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected static int speed;             // скорость выполнения
 
     protected String Task;                  // условие задачи
-    protected String workString;
+    protected String backupString;
     private String ChosenFile;              // открытый файл
 
     protected Handler handler;              // обработчик сообщений
@@ -75,10 +76,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         handler = new MyHandler(this);
 
         ListView lvMain = findViewById(R.id.lvMain);
+        workString = findViewById(R.id.workString);
         lvMain.setAdapter(markovAdapter);
 
         findViewById(R.id.add_line_up).setOnClickListener(this);
         findViewById(R.id.add_line_down).setOnClickListener(this);
+        findViewById(R.id.down).setOnClickListener(this);
+        findViewById(R.id.up).setOnClickListener(this);
         findViewById(R.id.delete_line).setOnClickListener(this);
         findViewById(R.id.stop_btn).setOnClickListener(this);
         findViewById(R.id.restore_ribbon).setOnClickListener(this);
@@ -125,14 +129,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.menu_help:
             {
                 Intent intent = new Intent(this, HelpActivity.class);
-                startActivity(intent);
-            }
-
-            break;
-
-            case R.id.menu_protocol:
-            {
-                Intent intent = new Intent(this, ProtocolActivity.class);
                 startActivity(intent);
             }
 
@@ -204,6 +200,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 break;
 
+            case R.id.up:
+
+                if (markovAdapter.isSelected && markovAdapter.current_line > 0)
+                {
+                    Markov markovString = new Markov(markovAdapter.markovArrayList.get(markovAdapter.current_line - 1));
+                    markovAdapter.markovArrayList.set(markovAdapter.current_line - 1, markovAdapter.markovArrayList.get(markovAdapter.current_line));
+                    markovAdapter.markovArrayList.set(markovAdapter.current_line, markovString);
+                    markovAdapter.current_line--;
+                    markovAdapter.notifyDataSetChanged();
+                }
+
+                break;
+
+            case R.id.down:
+
+                if (markovAdapter.isSelected && markovAdapter.current_line + 1 < markovAdapter.getCount())
+                {
+                    Markov markovString = new Markov(markovAdapter.markovArrayList.get(markovAdapter.current_line + 1));
+                    markovAdapter.markovArrayList.set(markovAdapter.current_line + 1, markovAdapter.markovArrayList.get(markovAdapter.current_line));
+                    markovAdapter.markovArrayList.set(markovAdapter.current_line, markovString);
+                    markovAdapter.current_line++;
+                    markovAdapter.notifyDataSetChanged();
+                }
+
+                break;
+
             case R.id.delete_line:
 
                 if (markovAdapter.markovArrayList.size() > 1 && markovAdapter.isSelected)
@@ -261,11 +283,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.stop_btn: stop(); break;
             case R.id.restore_ribbon:
 
-
+                if (backupString != null)
+                    workString.setText(backupString);
 
                 break;
 
-            case R.id.backup_ribbon: ; break;
+            case R.id.backup_ribbon: backupString = workString.getText().toString(); break;
             case R.id.create_btn: newFile(); break;
             case R.id.open_btn: showOpenDialog(); break;
             case R.id.save_btn: showSaveDialog(false); break;
@@ -284,6 +307,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onResume()
     {
         super.onResume();
+        workString.clearFocus();
     }
 
     @Override
@@ -335,6 +359,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void startBySteps()
     {
         isPlayBySteps = true;
+        markovAdapter.exec_line = 0;
 
         if (thread == null)
         {
@@ -606,6 +631,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         Task = null;
         ChosenFile = null;
+        backupString = null;
+        workString.setText("");
 
         markovAdapter.resetAdapter();
         markovAdapter.notifyDataSetChanged();
@@ -628,6 +655,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         isPaused = inState.getBoolean("isPaused");
         ChosenFile = inState.getString("file");
         Task = inState.getString("task");
+        backupString = inState.getString("backupString");
+        workString.setText(inState.getString("workString"));
 
         markovAdapter.current_line = inState.getInt("current_line");
         markovAdapter.exec_line = inState.getInt("exec_line");
@@ -649,6 +678,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         outState.putBoolean("isPaused", isPaused);
         outState.putString("file", ChosenFile);
         outState.putString("task", Task);
+        outState.putString("backupString", backupString);
+        outState.putString("workString", workString.getText().toString());
 
         outState.putInt("current_line", markovAdapter.current_line);
         outState.putInt("exec_line", markovAdapter.exec_line);

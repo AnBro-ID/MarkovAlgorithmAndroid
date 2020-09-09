@@ -88,7 +88,7 @@ public class SaveFile extends AsyncTask<Void, Void, Boolean>
                 dos.writeUTF(markov.getComment());
             }
 
-            dos.writeUTF(activity.get().workString);
+            dos.writeUTF(activity.get().workString.getText().toString());
         } catch (IOException e)
         {
             return false;

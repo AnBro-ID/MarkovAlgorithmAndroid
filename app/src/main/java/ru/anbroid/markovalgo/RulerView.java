@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 
 public class RulerView extends View
@@ -17,13 +18,13 @@ public class RulerView extends View
     private int step;
     private int strokeWidth;
 
-    public RulerView(Context context, AttributeSet foo)
+    public RulerView(Context context, AttributeSet atrset)
     {
-        super(context, foo);
+        super(context, atrset);
 
         paint = new Paint();
         step = 100;
-        strokeWidth = 5;
+        strokeWidth = Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 1, getResources().getDisplayMetrics()));
         mTextBoundRect = new Rect();
 
         setBackgroundColor(Color.TRANSPARENT);
@@ -31,7 +32,7 @@ public class RulerView extends View
         paint.setStrokeWidth(strokeWidth);
         paint.setAntiAlias(false);
         paint.setColor(Color.BLACK);
-        paint.setTextSize(25);
+        paint.setTextSize(Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 12, getResources().getDisplayMetrics())));
     }
 
     public void onSizeChanged(int w, int h, int oldW, int oldH)
@@ -48,26 +49,28 @@ public class RulerView extends View
         int left = getPaddingLeft();
         int right = getPaddingRight();
 
-        c.drawLine(left, height - 3, width - right, height - 3, paint);
+        c.drawLine(left, height - 1, width - right, height - 1, paint);
 
         for (int i = left; i < width - right; i++)
         {
             if (i % step == 0)
             {
-                size = Math.round(height / 2f);
+                size = Math.round(height / 1.5f);
                 text = Integer.toString(i / 10);
                 paint.getTextBounds(text, 0, text.length(), mTextBoundRect);
 
                 float textWidth = paint.measureText(text);
                 float textHeight = mTextBoundRect.height();
+
                 paint.setAntiAlias(true);
                 c.drawText(text, i - textWidth / 2f,size - textHeight / 2f, paint);
                 paint.setAntiAlias(false);
+
                 c.drawLine(i, height, i, size, paint);
             }
-            else if (i % 50 == 0)
+            else if (i % (step / 2) == 0)
             {
-                size = height - left;
+                size = height - left / 2f;
                 c.drawLine(i, height, i, size, paint);
             }
         }

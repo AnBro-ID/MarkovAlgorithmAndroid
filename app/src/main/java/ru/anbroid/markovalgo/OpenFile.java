@@ -58,7 +58,9 @@ class OpenFile extends SaveFile
             activity.get().Task = taskDesc;
 
             activity.get().markovAdapter.markovArrayList = arrayList;
-            activity.get().workString = workString;
+            activity.get().workString.setText(workString);
+            activity.get().markovAdapter.notifyDataSetChanged();
+            activity.get().backupString = workString;
         }
 
         activity.get().unlockScreenOrientation();

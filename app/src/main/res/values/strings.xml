@@ -34,7 +34,6 @@
     <string name="access_error">I/O Error</string>
     <string name="opening_file">Opening file…</string>
     <string name="saving_file">Saving file…</string>
-    <string name="protocol_menu">Replacements protocol</string>
 
     <string-array name="pref_speed">
         <item>Very fast</item>

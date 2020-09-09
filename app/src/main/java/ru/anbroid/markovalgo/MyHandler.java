@@ -19,14 +19,6 @@ class MyHandler extends Handler
     {
         MainActivity myApp = MainActivityRef.get();
 
-        if (myApp.markovAdapter.exec_line < myApp.markovAdapter.markovArrayList.size() && MainActivityRef != null)
-        {
-           ;
-        }
-        else
-        {
-            myApp.stop();
-            myApp.showError();
-        }
+
     }
 }
