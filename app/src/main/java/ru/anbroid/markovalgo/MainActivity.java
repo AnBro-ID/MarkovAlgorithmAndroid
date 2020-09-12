@@ -352,17 +352,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         isPaused = false;
 
-        markovAdapter.notifyDataSetChanged();
         thread.start();
     }
 
     private void startBySteps()
     {
         isPlayBySteps = true;
-        markovAdapter.exec_line = 0;
 
         if (thread == null)
         {
+            markovAdapter.exec_line = 0;
             thread = new Thread(new Runnable()
             {
                 @Override
@@ -373,8 +372,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             });
         }
         else thread.run();
-
-        markovAdapter.notifyDataSetChanged();
     }
 
     /**

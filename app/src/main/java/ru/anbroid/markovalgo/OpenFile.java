@@ -56,7 +56,7 @@ class OpenFile extends SaveFile
         else
         {
             activity.get().Task = taskDesc;
-
+            activity.get().markovAdapter.resetAdapter();
             activity.get().markovAdapter.markovArrayList = arrayList;
             activity.get().workString.setText(workString);
             activity.get().markovAdapter.notifyDataSetChanged();

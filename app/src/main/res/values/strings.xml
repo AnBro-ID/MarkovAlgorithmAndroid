@@ -5,9 +5,8 @@
     <string name="menu_task">Task description</string>
     <string name="menu_help">Help</string>
     <string name="menu_about">About</string>
-    <string name="sample_text">Sample</string>
+    <string name="sample_text">Pattern</string>
     <string name="cancel">Cancel</string>
-    <string name="clean">Clean</string>
     <string name="replace_text">Replacement</string>
     <string name="comment_text">Comment</string>
     <string name="settings_speed">Execution speed</string>

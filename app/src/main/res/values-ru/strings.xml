@@ -6,7 +6,6 @@
     <string name="menu_help">Справка</string>
     <string name="menu_about">О программе</string>
     <string name="cancel">Отмена</string>
-    <string name="clean">Очистить</string>
     <string name="sample_text">Образец</string>
     <string name="replace_text">Замена</string>
     <string name="comment_text">Комментарий</string>
@@ -23,9 +22,9 @@
     <string name="about_desc">Программа-эмулятор «Алгорифмы Маркова» для Android™ OS.</string>
     <string name="about_version">Версия:</string>
     <string name="exec_error_head">Ошибка выполнения</string>
-    <string name="exec_error_desc">Ошибка выполнения команды. Остановка машины.</string>
+    <string name="exec_error_desc">Ошибка выполнения команды. Остановка.</string>
     <string name="stop_head">Остановка выполнения</string>
-    <string name="stop_desc">Машина достигла конца программы.</string>
+    <string name="stop_desc">Достигнут конец программы.</string>
     <string name="file_name">Введите имя файла:</string>
     <string name="save_as">Сохранить как</string>
     <string name="open_file_head">Открыть файл</string>

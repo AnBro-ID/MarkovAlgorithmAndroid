@@ -9,30 +9,24 @@
         android:label="@string/app_name"
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
-        android:resizeableActivity="false"
-        android:supportsPictureInPicture="false"
         android:requestLegacyExternalStorage="true" >
 
-        <activity android:resizeableActivity="false"
-            android:supportsPictureInPicture="false" android:name="ru.anbroid.markovalgo.MainActivity">
+        <activity android:name="ru.anbroid.markovalgo.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:resizeableActivity="false"
-            android:supportsPictureInPicture="false" android:name="ru.anbroid.markovalgo.HelpActivity"
+        <activity android:name="ru.anbroid.markovalgo.HelpActivity"
             android:theme="@style/NoActBarTheme">
         </activity>
 
-        <activity android:resizeableActivity="false"
-            android:supportsPictureInPicture="false" android:name="ru.anbroid.markovalgo.TaskActivity"
+        <activity android:name="ru.anbroid.markovalgo.TaskActivity"
             android:theme="@style/NoActBarTheme">
         </activity>
 
-        <activity android:resizeableActivity="false"
-            android:supportsPictureInPicture="false" android:name="ru.anbroid.markovalgo.PrefActivity"
+        <activity android:name="ru.anbroid.markovalgo.PrefActivity"
             android:theme="@style/NoActBarTheme">
         </activity>
 

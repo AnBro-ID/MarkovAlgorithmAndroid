@@ -33,6 +33,7 @@
             android:layout_weight="1"
             android:background="@null"
             android:inputType="text"
+            android:maxLength="500"
             android:maxLines="1"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
