@@ -370,6 +370,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     handler.sendEmptyMessage(0);
                 }
             });
+
+            thread.run();
         }
         else thread.run();
     }

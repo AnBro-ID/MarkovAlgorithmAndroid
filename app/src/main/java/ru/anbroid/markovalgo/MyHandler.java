@@ -20,32 +20,53 @@ class MyHandler extends Handler
     {
         MainActivity myApp = MainActivityRef.get();
 
-        if (myApp.markovAdapter.exec_line < myApp.markovAdapter.markovArrayList.size())
-        {
-            String sample = myApp.markovAdapter.markovArrayList.get(myApp.markovAdapter.exec_line).getSample();
-            String replace = myApp.markovAdapter.markovArrayList.get(myApp.markovAdapter.exec_line).getReplacement();
-            String workString = myApp.workString.getText().toString();
+        int i = 0;
 
-            if (StringUtils.contains(workString, sample) && !sample.isEmpty() || !replace.isEmpty() && sample.isEmpty())
-            {
-                myApp.markovAdapter.notifyDataSetChanged();
-                myApp.markovAdapter.exec_line = 0;
-            }
-            else
-                myApp.markovAdapter.exec_line++;
+        for (; i < myApp.markovAdapter.getCount(); ++i)
+        {
+            String workString = myApp.workString.getText().toString();
+            String sample = myApp.markovAdapter.markovArrayList.get(i).getSample();
+            String replace = myApp.markovAdapter.markovArrayList.get(i).getReplacement();
 
             if (replace.endsWith("."))
             {
+                myApp.markovAdapter.exec_line = i;
+                myApp.markovAdapter.notifyDataSetChanged();
+
                 replace = StringUtils.removeEnd(replace, ".");
-                myApp.workString.setText(StringUtils.replaceOnce(workString, sample, replace));
+
+                if (sample.isEmpty())
+                    myApp.workString.setText(replace + workString);
+                else
+                    myApp.workString.setText(StringUtils.replaceOnce(workString, sample, replace));
 
                 myApp.stop();
                 myApp.showStopMessage();
+
+                break;
             }
-            else
+
+            if (StringUtils.contains(workString, sample) && !sample.isEmpty())
+            {
+                myApp.markovAdapter.exec_line = i;
+                myApp.markovAdapter.notifyDataSetChanged();
+
                 myApp.workString.setText(StringUtils.replaceOnce(workString, sample, replace));
+
+                break;
             }
-        else
+            else if (sample.isEmpty() && !replace.isEmpty())
+            {
+                myApp.markovAdapter.exec_line = i;
+                myApp.markovAdapter.notifyDataSetChanged();
+
+                myApp.workString.setText(replace + workString);
+
+                break;
+            }
+        }
+
+        if (i == myApp.markovAdapter.getCount())
         {
             myApp.stop();
             myApp.showStopMessage();
