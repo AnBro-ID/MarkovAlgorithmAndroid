@@ -21,8 +21,6 @@
     <string name="line_delete_confirm">Вы действительно хотите удалить эту строку?</string>
     <string name="about_desc">Программа-эмулятор «Алгорифмы Маркова» для Android™ OS.</string>
     <string name="about_version">Версия:</string>
-    <string name="exec_error_head">Ошибка выполнения</string>
-    <string name="exec_error_desc">Ошибка выполнения команды. Остановка.</string>
     <string name="stop_head">Остановка выполнения</string>
     <string name="stop_desc">Достигнут конец программы.</string>
     <string name="file_name">Введите имя файла:</string>

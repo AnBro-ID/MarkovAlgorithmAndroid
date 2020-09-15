@@ -416,26 +416,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     /**
-     * Метод показа ошибки выполнения
-     */
-
-    protected void showError()
-    {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-
-        builder.setTitle(R.string.exec_error_head);
-        builder.setMessage(R.string.exec_error_desc);
-        builder.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener()
-        {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {}
-        });
-
-        AlertDialog alert = builder.create();
-        alert.show();
-    }
-
-    /**
      * Метод показа сообщения об остановке выполнения
      */
 
