@@ -41,8 +41,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private AsyncTask currentTask;
     protected EditText workString;
 
-    private boolean isPlay;                 // флаг состояния МП - работает
-    private boolean isPaused;               // флаг состояния МП - приостановлена
+    private boolean isPlay;
+    private boolean isPaused;
     private boolean isPlayBySteps;
     protected static int speed;             // скорость выполнения
 
@@ -317,10 +317,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (isPlay) pause();
     }
 
-    /**
-     * Метод, инициирующий выполнение программы МП
-     */
-
     private void start()
     {
         playBtn.setImageResource(R.drawable.pause);
@@ -376,10 +372,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else thread.run();
     }
 
-    /**
-     * Метод, останавливающий выполнение программы МП
-     */
-
     protected void stop()
     {
         if (thread != null)
@@ -400,10 +392,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    /**
-     * Метод, приостанавливающий выполнение программы МП
-     */
-
     protected void pause()
     {
         playBtn.setImageResource(R.drawable.play);
@@ -414,10 +402,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         handler.removeCallbacksAndMessages(null);
         thread.interrupt();
     }
-
-    /**
-     * Метод показа сообщения об остановке выполнения
-     */
 
     protected void showStopMessage()
     {
@@ -441,10 +425,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         saveFileConfirm();
     }
 
-    /**
-     * Метод предупреждения об несохраненных изменениях
-     */
-
     private void saveFileConfirm()
     {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -466,10 +446,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         AlertDialog alert = builder.create();
         alert.show();
     }
-
-    /**
-     * Метод, показывающий диалог открытия файла
-     */
 
     private void showOpenDialog()
     {
@@ -574,10 +550,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else currentTask = new SaveFile(MainActivity.this, ChosenFile).execute();
     }
-
-    /**
-     * Метод создания новой программы МП
-     */
 
     private void newFile()
     {
