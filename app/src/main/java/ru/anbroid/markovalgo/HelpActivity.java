@@ -2,6 +2,7 @@ package ru.anbroid.markovalgo;
 
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebView;
@@ -21,6 +22,8 @@ public class HelpActivity extends AppCompatActivity
     protected void onCreate(final Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         WebView webView;
         setContentView(R.layout.activity_help);
 

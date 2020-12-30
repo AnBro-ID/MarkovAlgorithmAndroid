@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Алгорифмы Маркова</string>
+    <string name="app_name">Алгоритмы Маркова</string>
     <string name="menu_settings">Настройки</string>
     <string name="menu_task">Условие задачи</string>
     <string name="menu_help">Справка</string>
@@ -19,7 +19,7 @@
     <string name="close_confirm">Несохраненные изменения будут утеряны. Продолжить?</string>
     <string name="line_delete_head">Удаление</string>
     <string name="line_delete_confirm">Вы действительно хотите удалить эту строку?</string>
-    <string name="about_desc">Программа-эмулятор «Алгорифмы Маркова» для Android™ OS.</string>
+    <string name="about_desc">Программа-эмулятор «Алгоритмы Маркова» для Android™ OS.</string>
     <string name="about_version">Версия:</string>
     <string name="stop_head">Остановка выполнения</string>
     <string name="stop_desc">Достигнут конец программы.</string>

@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MarkovAlgo.iml" filepath="$PROJECT_DIR$/.idea/modules/MarkovAlgo.iml" group="MarkovAlgo" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="MarkovAlgo/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MarkovAlgo.iml" filepath="$PROJECT_DIR$/.idea/modules/MarkovAlgo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/MarkovAlgo.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/MarkovAlgo.app.iml" />
     </modules>
   </component>
 </project>
