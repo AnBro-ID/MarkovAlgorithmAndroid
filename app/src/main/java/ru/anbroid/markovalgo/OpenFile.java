@@ -1,6 +1,5 @@
 package ru.anbroid.markovalgo;
 
-import android.os.Environment;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -74,7 +73,7 @@ class OpenFile extends SaveFile
 
         try
         {
-            File file = new File(Environment.getExternalStorageDirectory(), fileName);
+            File file = new File(activity.get().getExternalFilesDir(null).toString(), fileName);
             in = new DataInputStream(new BufferedInputStream(
                     new FileInputStream(file)));
 

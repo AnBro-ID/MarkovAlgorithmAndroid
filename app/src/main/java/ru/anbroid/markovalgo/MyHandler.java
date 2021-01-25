@@ -22,7 +22,9 @@ class MyHandler extends Handler
 
         int i = 0;
 
-        for (; i < myApp.markovAdapter.getCount(); ++i)
+        int count = myApp.markovAdapter.getCount();
+
+        for (; i < count; ++i)
         {
             String workString = myApp.workString.getText().toString();
             String sample = myApp.markovAdapter.markovArrayList.get(i).getSample();

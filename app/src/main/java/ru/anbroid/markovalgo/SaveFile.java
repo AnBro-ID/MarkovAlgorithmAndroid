@@ -1,7 +1,6 @@
 package ru.anbroid.markovalgo;
 
 import android.os.AsyncTask;
-import android.os.Environment;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -53,7 +52,7 @@ public class SaveFile extends AsyncTask<Void, Void, Boolean>
         if (success)
         {
             Toast.makeText(activity.get(), activity.get().getString(R.string.save_file_succ) + ' ' +
-                    Environment.getExternalStorageDirectory().toString() + '/' + fileName, Toast.LENGTH_LONG).show();
+                    activity.get().getExternalFilesDir(null).toString() + '/' + fileName, Toast.LENGTH_LONG).show();
         }
         else
             Toast.makeText(activity.get(), R.string.access_error, Toast.LENGTH_LONG).show();
@@ -67,7 +66,7 @@ public class SaveFile extends AsyncTask<Void, Void, Boolean>
 
         try
         {
-            File file = new File(Environment.getExternalStorageDirectory(), fileName);
+            File file = new File(activity.get().getExternalFilesDir(null).toString(), fileName);
             dos = new DataOutputStream(new BufferedOutputStream(
                     new FileOutputStream(file)));
 
@@ -79,7 +78,9 @@ public class SaveFile extends AsyncTask<Void, Void, Boolean>
 
             dos.writeInt(activity.get().markovAdapter.markovArrayList.size());
 
-            for (int i = 0; i < activity.get().markovAdapter.markovArrayList.size(); ++i)
+            int size = activity.get().markovAdapter.markovArrayList.size();
+
+            for (int i = 0; i < size; ++i)
             {
                 Markov markov = activity.get().markovAdapter.markovArrayList.get(i);
 

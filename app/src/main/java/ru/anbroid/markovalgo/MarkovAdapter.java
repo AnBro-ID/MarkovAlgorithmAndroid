@@ -24,6 +24,7 @@ public class MarkovAdapter extends ArrayAdapter<Markov>
     public int current_line;
     public int exec_line;
     public boolean isSelected;
+    private boolean isUnlocked;
 
     static class ViewHolder
     {
@@ -48,6 +49,7 @@ public class MarkovAdapter extends ArrayAdapter<Markov>
         current_line = -1;
         exec_line = -1;
         isSelected = false;
+        isUnlocked = true;
     }
 
     @Override
@@ -194,6 +196,7 @@ public class MarkovAdapter extends ArrayAdapter<Markov>
             viewHolder.Sample.setOnClickListener(OCL);
             viewHolder.Replacement.setOnClickListener(OCL);
             viewHolder.Comment.setOnClickListener(OCL);
+
             rowView.setTag(viewHolder);
         }
 
@@ -202,6 +205,19 @@ public class MarkovAdapter extends ArrayAdapter<Markov>
         else rowView.setBackgroundResource(R.color.normal);
 
         ViewHolder holder = (ViewHolder) rowView.getTag();
+
+        if (isUnlocked)
+        {
+            holder.Sample.setEnabled(true);
+            holder.Replacement.setEnabled(true);
+            holder.Comment.setEnabled(true);
+        }
+        else
+        {
+            holder.Sample.setEnabled(false);
+            holder.Replacement.setEnabled(false);
+            holder.Comment.setEnabled(false);
+        }
 
         holder.Count.setText(String.valueOf(position + 1));
         holder.Count.setTag(position);
@@ -228,6 +244,16 @@ public class MarkovAdapter extends ArrayAdapter<Markov>
         markovArrayList.clear();
         markovArrayList.add(new Markov());
         markovArrayList.trimToSize();
+    }
+
+    public void lock()
+    {
+        isUnlocked = false;
+    }
+
+    public void unlock()
+    {
+        isUnlocked = true;
     }
 
     @Override

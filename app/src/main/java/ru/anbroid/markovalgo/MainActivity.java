@@ -9,7 +9,6 @@ import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatDelegate;
@@ -42,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected MarkovAdapter markovAdapter;
     private AsyncTask currentTask;
     protected EditText workString;
+    private volatile boolean isDialogShow;
 
     private boolean isPlay;
     private boolean isPaused;
@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         isPlay = false;
         isPaused = false;
         isPlayBySteps = false;
+        isDialogShow = false;
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
         speed = Integer.parseInt(sp.getString("speed_list", "500"));
 
@@ -235,6 +236,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 {
                     if (markovAdapter.markovArrayList.get(markovAdapter.current_line).hasText())
                     {
+                        if (isDialogShow) return;
+
+                        isDialogShow = true;
                         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
                         builder.setTitle(R.string.line_delete_head);
@@ -258,6 +262,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         {
                             @Override
                             public void onClick(DialogInterface dialog, int which) { }
+                        });
+
+                        builder.setOnDismissListener(new DialogInterface.OnDismissListener()
+                        {
+                            @Override
+                            public void onDismiss(DialogInterface dialogInterface)
+                            {
+                                isDialogShow = false;
+                            }
                         });
 
                         AlertDialog alert = builder.create();
@@ -322,6 +335,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void start()
     {
+        lock();
         playBtn.setImageResource(R.drawable.pause);
 
         isPlay = true;
@@ -392,6 +406,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             markovAdapter.exec_line = -1;
             markovAdapter.notifyDataSetChanged();
+            unlock();
         }
     }
 
@@ -455,7 +470,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if (!StorageUtils.checkStoragePermission(this)) return;
 
         final String[] mFileList;
-        File mPath = new File(Environment.getExternalStorageDirectory().toString());
+        File mPath = new File(getExternalFilesDir(null).toString());
 
         FilenameFilter filter = new FilenameFilter()
         {
@@ -472,7 +487,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if (mFileList.length == 0)
                 Toast.makeText(this, getString(R.string.no_file) + ' ' +
-                        Environment.getExternalStorageDirectory().toString(), Toast.LENGTH_LONG).show();
+                        getExternalFilesDir(null).toString(), Toast.LENGTH_LONG).show();
         else
         {
             if (isPlay || isPaused || isPlayBySteps) stop();
@@ -480,7 +495,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
             builder.setTitle(getString(R.string.open_file_head) + '(' +
-                    Environment.getExternalStorageDirectory().toString() + ')');
+                    getExternalFilesDir(null).toString() + ')');
 
             builder.setItems(mFileList, new DialogInterface.OnClickListener()
             {
@@ -618,7 +633,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         markovAdapter.markovArrayList.clear();
 
-        for (int i = 0; i < inState.getInt("size"); ++i)
+        int count = inState.getInt("size");
+
+        for (int i = 0; i < count; ++i)
             markovAdapter.markovArrayList.add((Markov) inState.getSerializable(Integer.toString(i)));
     }
 
@@ -640,7 +657,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         outState.putBoolean("isSelected", markovAdapter.isSelected);
         outState.putInt("size", markovAdapter.getCount());
 
-        for (int i = 0; i < markovAdapter.getCount(); ++i)
+        int count = markovAdapter.getCount();
+
+        for (int i = 0; i < count; ++i)
             outState.putSerializable(Integer.toString(i), markovAdapter.markovArrayList.get(i));
 
         super.onSaveInstanceState(outState);
@@ -662,5 +681,31 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void unlockScreenOrientation()
     {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_USER);
+    }
+
+    public void lock()
+    {
+        workString.setEnabled(false);
+        markovAdapter.lock();
+        findViewById(R.id.add_line_up).setOnClickListener(null);
+        findViewById(R.id.add_line_down).setOnClickListener(null);
+        findViewById(R.id.down).setOnClickListener(null);
+        findViewById(R.id.up).setOnClickListener(null);
+        findViewById(R.id.delete_line).setOnClickListener(null);
+        findViewById(R.id.restore_ribbon).setOnClickListener(null);
+        findViewById(R.id.backup_ribbon).setOnClickListener(null);
+    }
+
+    public void unlock()
+    {
+        workString.setEnabled(true);
+        markovAdapter.unlock();
+        findViewById(R.id.add_line_up).setOnClickListener(this);
+        findViewById(R.id.add_line_down).setOnClickListener(this);
+        findViewById(R.id.down).setOnClickListener(this);
+        findViewById(R.id.up).setOnClickListener(this);
+        findViewById(R.id.delete_line).setOnClickListener(this);
+        findViewById(R.id.restore_ribbon).setOnClickListener(this);
+        findViewById(R.id.backup_ribbon).setOnClickListener(this);
     }
 }
