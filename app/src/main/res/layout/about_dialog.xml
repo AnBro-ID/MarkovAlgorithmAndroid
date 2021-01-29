@@ -12,10 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:autoLink="email"
-        app:drawableStartCompat="@mipmap/ic_launcher"
-        app:drawableLeftCompat="@mipmap/ic_launcher"
+        android:drawablePadding="10dp"
         android:gravity="center_vertical"
+        android:paddingLeft="10dp"
         android:paddingBottom="20dp"
-        android:singleLine="false" />
+        android:singleLine="false"
+        app:drawableLeftCompat="@mipmap/ic_launcher"
+        app:drawableStartCompat="@mipmap/ic_launcher" />
 
 </LinearLayout>

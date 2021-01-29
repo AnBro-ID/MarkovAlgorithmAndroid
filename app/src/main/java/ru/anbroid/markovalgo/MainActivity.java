@@ -494,8 +494,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
-            builder.setTitle(getString(R.string.open_file_head) + '(' +
-                    getExternalFilesDir(null).toString() + ')');
+            builder.setTitle(R.string.open_file_head);
 
             builder.setItems(mFileList, new DialogInterface.OnClickListener()
             {
