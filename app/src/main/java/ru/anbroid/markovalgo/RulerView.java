@@ -9,6 +9,8 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.View;
 
+import androidx.core.content.ContextCompat;
+
 public class RulerView extends View
 {
     private Paint paint;
@@ -31,7 +33,7 @@ public class RulerView extends View
         paint.setStyle(Paint.Style.FILL);
         paint.setStrokeWidth(strokeWidth);
         paint.setAntiAlias(false);
-        paint.setColor(Color.BLACK);
+        paint.setColor(ContextCompat.getColor(context, R.color.text_color));
         paint.setTextSize(Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 12, getResources().getDisplayMetrics())));
     }
 

@@ -14,7 +14,7 @@
         android:focusable="false"
         android:gravity="center_vertical|center_horizontal"
         android:textAlignment="center"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/text_color" />
 
     <EditText
         android:id="@+id/Sample"
@@ -30,7 +30,7 @@
         android:maxLength="500"
         android:singleLine="true"
         android:textAlignment="center"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/text_color" />
 
     <EditText
         android:id="@+id/Replacement"
@@ -46,7 +46,7 @@
         android:maxLength="500"
         android:singleLine="true"
         android:textAlignment="center"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/text_color" />
 
     <EditText
         android:id="@+id/Comment"
@@ -61,5 +61,5 @@
         android:longClickable="false"
         android:maxLength="500"
         android:singleLine="true"
-        android:textColor="@android:color/black" />
+        android:textColor="@color/text_color" />
 </LinearLayout>

@@ -1,11 +1,12 @@
 package ru.anbroid.markovalgo;
 
+import android.content.res.Configuration;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -22,9 +23,8 @@ public class HelpActivity extends AppCompatActivity
     protected void onCreate(final Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        WebView webView;
+        final WebView webView;
         setContentView(R.layout.activity_help);
 
         Toolbar toolbar = findViewById(R.id.toolbar_help);
@@ -43,6 +43,22 @@ public class HelpActivity extends AppCompatActivity
         String defaultPath = "file:///android_asset/help-en.htm";
 
         webView = findViewById(R.id.help_page);
+
+        int nightModeFlag = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+        if (nightModeFlag == Configuration.UI_MODE_NIGHT_YES)
+        {
+            webView.getSettings().setJavaScriptEnabled(true);
+
+            webView.setWebViewClient(new WebViewClient()
+            {
+                @Override
+                public void onPageFinished(WebView view, String url)
+                {
+                    webView.loadUrl("javascript:(function(){document.getElementById('dark').media = 'all';})()");
+                }
+            });
+        }
 
         try
         {
