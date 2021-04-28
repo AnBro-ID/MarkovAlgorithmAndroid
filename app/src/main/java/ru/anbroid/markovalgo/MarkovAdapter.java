@@ -23,6 +23,7 @@ public class MarkovAdapter extends ArrayAdapter<Markov>
 
     public int current_line;
     public int exec_line;
+    public int match_line;
     public boolean isSelected;
     private boolean isUnlocked;
 
@@ -48,6 +49,7 @@ public class MarkovAdapter extends ArrayAdapter<Markov>
 
         current_line = -1;
         exec_line = -1;
+        match_line = -1;
         isSelected = false;
         isUnlocked = true;
     }
@@ -200,7 +202,8 @@ public class MarkovAdapter extends ArrayAdapter<Markov>
             rowView.setTag(viewHolder);
         }
 
-        if (exec_line == position) rowView.setBackgroundResource(R.color.exec);
+        if (match_line == position) rowView.setBackgroundResource(R.color.match_line);
+        else if (exec_line == position) rowView.setBackgroundResource(R.color.exec);
         else if (current_line == position) rowView.setBackgroundResource(R.color.selected);
         else rowView.setBackgroundResource(R.color.normal);
 
@@ -239,6 +242,7 @@ public class MarkovAdapter extends ArrayAdapter<Markov>
     {
         current_line = -1;
         exec_line = -1;
+        match_line = -1;
         isSelected = false;
 
         markovArrayList.clear();

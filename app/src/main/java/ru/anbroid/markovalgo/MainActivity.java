@@ -338,6 +338,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         isPlay = true;
 
+        markovAdapter.notifyDataSetChanged();
+
         thread = new Thread(new Runnable()
         {
             @Override
@@ -370,9 +372,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     {
         isPlayBySteps = true;
 
+        markovAdapter.notifyDataSetChanged();
+
         if (thread == null)
         {
             markovAdapter.exec_line = 0;
+
             thread = new Thread(new Runnable()
             {
                 @Override
@@ -381,8 +386,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     handler.sendEmptyMessage(0);
                 }
             });
-
-            thread.run();
         }
         else thread.run();
     }
@@ -403,6 +406,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             handler.removeCallbacksAndMessages(null);
 
             markovAdapter.exec_line = -1;
+            markovAdapter.match_line = -1;
             markovAdapter.notifyDataSetChanged();
             unlock();
         }
@@ -627,6 +631,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         markovAdapter.current_line = inState.getInt("current_line");
         markovAdapter.exec_line = inState.getInt("exec_line");
         markovAdapter.isSelected = inState.getBoolean("isSelected");
+        markovAdapter.match_line = inState.getInt("match_line");
 
         markovAdapter.markovArrayList.clear();
 
@@ -651,6 +656,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         outState.putInt("current_line", markovAdapter.current_line);
         outState.putInt("exec_line", markovAdapter.exec_line);
+        outState.putInt("match_line", markovAdapter.match_line);
         outState.putBoolean("isSelected", markovAdapter.isSelected);
         outState.putInt("size", markovAdapter.getCount());
 

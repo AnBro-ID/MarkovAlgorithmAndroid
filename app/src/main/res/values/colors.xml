@@ -5,4 +5,5 @@
 	<color name="exec">#ff67ff75</color>
 	<color name="normal">#ffffff</color>
 	<color name="workstr_back">#FEFEE2</color>
+	<color name="match_line">#FF0000</color>
 </resources>
