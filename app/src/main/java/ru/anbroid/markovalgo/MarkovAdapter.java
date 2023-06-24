@@ -13,7 +13,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 /**
- * @author AnBro-ID, 2018
+ * @author AnBro-ID, 2022
  * Модифицированный адаптер для списка строк программы МП
  */
 
