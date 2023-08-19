@@ -1,9 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    signingConfigs {
-    }
-    compileSdkVersion 33
+    compileSdk 33
     defaultConfig {
         applicationId "ru.anbroid.markovalgo"
         minSdkVersion 14
@@ -24,7 +22,7 @@ android {
             debuggable true
         }
     }
-    buildToolsVersion '33.0.0'
+    buildToolsVersion = '33.0.1'
     productFlavors {
     }
 
@@ -56,6 +54,6 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.preference:preference:1.2.0'
+    implementation 'androidx.preference:preference:1.2.1'
     implementation 'org.apache.commons:commons-text:1.10.0'
 }
